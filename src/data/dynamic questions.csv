@@ -1,0 +1,11 @@
+question_id,question,value_type,line_item_description,qb_product_sku,scale_multiplier,question_number
+1,"How much data are you currently storing in {system}?",dropdown,"For the migration of {amount} GB of data",DM-1,NULL,4
+2,"Are your files stored in TIF format?",yes_no_idk,"Fee for tif requirement",TF-1,0.15,5
+3,"What is the name of the system your business is currently using?",dropdown,NULL,NULL,NULL,1
+4,"Is your data hosted at your office or in the cloud?",dropdown,NULL,NULL,NULL,3
+5,"Do you utilize document meta data in your current system?  If so, are you looking to transfer this information to your new system?",yes_no_idk,"Fee for metadata transfer",MP-1,0.2,6
+6,"Do you utilize document annotations in your current system?  If so, are you looking to transfer this information to your new system?",yes_no_idk,"Fee for annotation requirement",AT-1,0.1,7
+7,"Have you already started scanning into your document system?",yes_no_idk,"Fee for already scanned to EFC",NF-1,0.1,8
+8,"Will users continue scanning documents into {system} during the extraction/migration process?",yes_no_idk,"Fee for scanning to EFC while migration occurs",GF-1,0.2,9
+9,"Are you looking to clean up your current data in {system} before or after extracting and/or migrating it?",yes_no_idk,"Fee for data scrubbing",DS-1,0.25,10
+10,"Have you chosen a new system to transfer to?",yes_no_idk,NULL,NULL,NULL,2

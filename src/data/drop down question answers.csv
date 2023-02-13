@@ -1,0 +1,25 @@
+dd_id,question_id,label,value
+1,3,Alchemy,Alchemy
+2,3,Alfresco,Alfresco
+3,3,ApplicationExtender,ApplicationExtender
+4,3,DocStar,DocStar
+5,3,"DocStar Eclipse","DocStar Eclipse"
+6,3,DocuWare,DocuWare
+7,3,ImageWare,ImageWare
+8,3,InfoRouter,InfoRouter
+9,3,Intact,Intact
+10,3,LaserFiche,LaserFiche
+11,3,Paperless,Paperless
+12,3,PaperSave,PaperSave
+13,3,Sharepoint,Sharepoint
+14,3,Treeno,Treeno
+15,3,"My system is not listed",textInput
+16,4,"In The Office",OnPremise
+17,4,"In The Cloud",InCloud
+18,1,"0-50 GB",50
+19,1,"50-100 GB",100
+20,1,"100-250 GB",250
+21,1,"250-500 GB",500
+22,1,"500-1000 GB",1000
+23,1,"1000 or Greater GB",1500
+24,1,"I don't know",0
