@@ -1,7 +1,7 @@
 import { useState } from "react"
 import './assets/styling/App.css'
-
-import { dynamicInputsData } from "./data/inputData.js"
+// @ts-ignore
+import { dynamicInputsData, dropdownData } from "./data/inputData.js"
 
 function App() {
 
@@ -15,7 +15,15 @@ function App() {
     return (
         <div className="App">
             <form className="form-wrapper">
-                {dynamicInputsData.map((current: object, idx: number) => (
+                {dynamicInputsData.map((current: {
+                    question_id: number | null
+                    question: string | null
+                    value_type: string | null
+                    line_item_description: string | null
+                    qb_product_sku: string | null
+                    scale_multiplier: number | null
+                    question_number: number | null
+                }, idx: number) => (
                     current.value_type === "dropdown" ?
                         <div key={idx
                         }>
@@ -29,7 +37,10 @@ function App() {
                         }>
                             <label>{current.question}</label>
                             <select>
-                                <option value="abc">abc</option>
+                                {dropdownData.filter((curOption: any) => curOption.question_id === current.question_id).map((curList: any, idx: number) => (
+                                    <option key={idx} value={curList.value}>{curList.value}</option>
+                                ))}
+                                {/* <option value="abc">abc</option> */}
                             </select>
                         </div>
                 ))}
