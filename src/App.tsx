@@ -1,21 +1,26 @@
-import { useState } from "react"
+import { useEffect, useState, useSyncExternalStore } from "react"
 import './assets/styling/App.css'
 // @ts-ignore
-import { dynamicInputsData, dropdownData } from "./data/inputData.js"
+import { arrFormInputs } from "./data/inputData.js"
+import { arrDropdownData } from "./data/dropdownData.js"
 
 function App() {
 
-    console.log(dynamicInputsData)
-
     // const csvFile = "./data/dynamic questions.csv"
 
+    const [inputFields, setInputFields] = useState(arrFormInputs)
+    const [dropDownData, setDropDownData] = useState(arrDropdownData)
 
-    const [inputFields, setInputFields] = useState([])
+    useEffect(() => {
+        // setInputFields()
+        // setDropDownData()
+    }, [])
+
 
     return (
         <div className="App">
             <form className="form-wrapper">
-                {dynamicInputsData.map((current: {
+                {arrFormInputs.map((current: {
                     question_id: number | null
                     question: string | null
                     value_type: string | null
@@ -23,25 +28,36 @@ function App() {
                     qb_product_sku: string | null
                     scale_multiplier: number | null
                     question_number: number | null
-                }, idx: number) => (
+                },
+                    idx: number) => (
                     current.value_type === "dropdown" ?
+
                         <div key={idx
                         }>
-                            <h4>{current.question}</h4>
-                            <div><label htmlFor=""></label>yes<input type="radio" name="answer" id="yes" value="yes" /></div>
-                            <div><label htmlFor=""></label>no<input type="radio" name="answer" id="no" value="no" /></div>
-                            <div><label htmlFor=""></label>idk<input type="radio" name="answer" id="idk" value="idk" /></div>
-                        </div>
-                        :
-                        <div key={idx
-                        }>
-                            <label>{current.question}</label>
-                            <select>
-                                {dropdownData.filter((curOption: any) => curOption.question_id === current.question_id).map((curList: any, idx: number) => (
-                                    <option key={idx} value={curList.value}>{curList.value}</option>
+                            <h3>{current.question}</h3>
+                            <select className="form-select" >
+                                {arrDropdownData.filter((curOption: any) => curOption.question_id === current.question_id).map((curList: any, idx: number) => (
+                                    <option className="form-option" key={idx} value={curList.value} >{curList.label}</option>
                                 ))}
-                                {/* <option value="abc">abc</option> */}
                             </select>
+                        </div>
+
+                        :
+
+                        <div key={idx
+                        } >
+                            <h3>{current.question}</h3>
+                            <div className="radio-btn-group">
+                                <label htmlFor={`question-${current.question_id}-yes`}>
+                                    <input className="radio-btn" type="radio" name={`question-${current.question_id}-ans`} id={`question-${current.question_id}-yes`} value="yes" />
+                                    Yes</label>
+                                <label htmlFor={`question-${current.question_id}-no`}>
+                                    <input className="radio-btn" type="radio" name={`question-${current.question_id}-ans`} id={`question-${current.question_id}-no`} value="no" />
+                                    No</label>
+                                <label htmlFor={`question-${current.question_id}-idk`}>
+                                    <input className="radio-btn" type="radio" name={`question-${current.question_id}-ans`} id={`question-${current.question_id}-idk`} value="idk" />
+                                    I don't Know</label>
+                            </div>
                         </div>
                 ))}
             </form>
