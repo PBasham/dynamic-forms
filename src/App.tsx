@@ -8,19 +8,22 @@ function App() {
 
     // const csvFile = "./data/dynamic questions.csv"
 
-    const [inputFields, setInputFields] = useState(arrFormInputs)
-    const [dropDownData, setDropDownData] = useState(arrDropdownData)
+    const [inputFields, setInputFields] = useState<any>([])
+    const [dropDownData, setDropDownData] = useState<any>([])
 
     useEffect(() => {
-        // setInputFields()
-        // setDropDownData()
+        // @ts-ignore
+        arrFormInputs.sort((a,b) => a.question_number > b.question_number ? 1 : -1)
+
+        setInputFields(arrFormInputs)
+        setDropDownData(arrDropdownData)
     }, [])
 
 
     return (
         <div className="App">
             <form className="form-wrapper">
-                {arrFormInputs.map((current: {
+                {inputFields.map((current: {
                     question_id: number | null
                     question: string | null
                     value_type: string | null
@@ -34,7 +37,7 @@ function App() {
 
                         <div key={idx
                         }>
-                            <h3>{current.question}</h3>
+                            <h3>{current.question_number}<span>{current.question}</span></h3>
                             <select className="form-select" >
                                 {arrDropdownData.filter((curOption: any) => curOption.question_id === current.question_id).map((curList: any, idx: number) => (
                                     <option className="form-option" key={idx} value={curList.value} >{curList.label}</option>
@@ -46,7 +49,7 @@ function App() {
 
                         <div key={idx
                         } >
-                            <h3>{current.question}</h3>
+                            <h3>{current.question_number}<span>{current.question}</span></h3>
                             <div className="radio-btn-group">
                                 <label htmlFor={`question-${current.question_id}-yes`}>
                                     <input className="radio-btn" type="radio" name={`question-${current.question_id}-ans`} id={`question-${current.question_id}-yes`} value="yes" />

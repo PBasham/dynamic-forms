@@ -97,13 +97,4 @@ export const arrFormInputs: {
         scale_multiplier: null,
         question_number: 2,
     },
-    {
-        question_id: 11,
-        question: "Are we adding a new question?",
-        value_type: "yes_no_idk",
-        line_item_description: null,
-        qb_product_sku: null,
-        scale_multiplier: null,
-        question_number: 12,
-    },
 ]
